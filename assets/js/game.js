@@ -160,6 +160,11 @@ var checkAnswer = function () {
   if (userAnswer === correctAnswer) {
     //Update rightCount
     rightCount++;
+  //}
+  //else{
+    //var newDiv = $('<div>');
+    //newDiv.text('Wrong!');
+  //}
 
     //Clears out trivia section
     $('.trivSection').empty();

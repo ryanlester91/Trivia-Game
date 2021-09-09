@@ -2,3 +2,8 @@
     font-size: 48px;
     font-weight: bold;
 }
+
+.trivSection {
+    padding: 10px;
+    border: 1px solid black;
+}
