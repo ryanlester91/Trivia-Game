@@ -34,43 +34,48 @@ var qACount = 1;
 var timer = '';
 var userAnswer;
 
-var newDiv = $('<div>');
-    $('.questions').append(newDiv);
+var card = $(".trivSection")
 
-var qA = [
-  {
+//var newDiv = $('<div>');
+    //$('.questions').append(newDiv);
+
+
+  var question1 = {
     question: 'I captained the Queen Anne\'s \ Revenge and placed lit matches under my hat to make my enemies believe I reeked of hellfire. I even blockaded the port of Charleston and made off with choice valuables before I met my end in a battle at Ocracoke. Who am I?',
-    answers: ['Bartholomew Roberts', 'Blackbeard', 'Captain Henry Morgan'],
+    options: ['Bartholomew Roberts', 'Blackbeard', 'Captain Henry Morgan'],
     correct: 'Blackbeard',
     right: 'Correct!',
     wrong: 'Wrong!',
     imageURL: 'assets/images/blackbeard.jpg'
-  },
-  {
+  };
+  var question2 = {
     question: 'I plundered settlements and ships on the Spanish Main, and even the King of England treated me as a hero for stickin\'\ it to Spain. You may have heard of the rum with my name. Who am I?',
-    answers: ['Captain Henry Morgan', 'Captain Kidd', 'Blackbeard'],
+    options: ['Captain Henry Morgan', 'Captain Kidd', 'Blackbeard'],
     correct: 'Captain Henry Morgan',
     right: 'Correct!',
     wrong: 'Wrong!',
     imageURL: 'assets/images/captain-morgan.jpg'
-  },
-  {
+  };
+  var question3 = {
     question: '400 ships my crew and I snatched as we ventured from the Caribbean to West Africa; even my enemies swore I was invincible! A merry life and a short one was my motto. Who am I?',
-    answers: ['Captain Kidd', 'Bartholomew Roberts', 'Captain Henry Morgan'],
+    options: ['Captain Kidd', 'Bartholomew Roberts', 'Captain Henry Morgan'],
     correct: 'Bartholomew Roberts',
+    //incorrect: []
     right: 'Correct!',
     wrong: 'Wrong!',
     imageURL: 'assets/images/black-bart-roberts.jpg'
-  },
-  {
+  };
+
+  var question4 = {
     question: 'I buried my treasure here and there, and to this day people are still hunting for my riches. Who am I?',
-    answers: ['Blackbeard', 'Captain Henry Morgan', 'Captain Kidd'],
+    options: ['Blackbeard', 'Captain Henry Morgan', 'Captain Kidd'],
     correct: 'Captain Kidd',
+    //incorrect: []
     right: 'Correct!',
     wrong: 'Wrong!',
     imageURL: 'assets/images/captain-kidd.jpeg'
   }
-];
+  var qA = [question1, question2, question3, question4];
 //Functions
 //=====================================
   //Making start button clickable; when button is clicked clear the trivia section
@@ -83,22 +88,41 @@ var qA = [
 var createQuestions = function () {
   timerStart();
   
-  for(i = 0; i < qA.length; i++) {
+  //for(i = 0; i < qA.length; i++) {
     
-    newDiv.append('<h2>' + qA[i].question + '</h2>');
+    /*newDiv.append('<h2>' + qA[i].question + '</h2>');
       for(j = 0; j < qA[i].answers.length; j++){
         newDiv.append('<input type="radio" name="pirate" value="question"' + i + '>' + qA[i].answers[j])
         console.log(qA[i].answers[j]);
-      }
+      }*/
+
+      //Creating via card variable rather than via a new div
+      for (var i = 0; i < qA.length; i++) {
+        card.append("<h3>" + qA[i].question + "</h3>");
+      
+        for (var j = 0; j < qA[i].options.length; j++) {
+          card.append(
+            "<p> <input type='radio' class='question" +
+              i + "' name='question" +
+              i +
+              "' value='" +
+              qA[i].options[j] + "'>" + qA[i].options[j] + "</p>");
+          }
+        }
+      
+      
+      
+
+
   }  
   //Get question
   
-}
+
 
 var createAnswers = function () {
   
 
-  for (var j = 0; j < qACount[i].answers[j].length; j++) {
+  for (var j = 0; j < qACount[i].options[j].length; j++) {
     //get answers
     var answers = qA[qACount]['answers'][j];
     //Create new div to hold answers
@@ -295,3 +319,4 @@ var gameOver = function () {
 //}
 
 //start();
+
